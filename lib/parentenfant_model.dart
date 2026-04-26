@@ -1,5 +1,6 @@
+import 'package:carousel_slider/carousel_slider.dart';
 
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide CarouselController;
 import 'package:flutterflow_ui/flutterflow_ui.dart';
 
 import 'parentenfant.dart' show Parentenfant;

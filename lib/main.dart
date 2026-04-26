@@ -1,20 +1,23 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:observa/parent.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const MainApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MainApp extends StatelessWidget {
+  const MainApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Observa',
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Observa')),
-        body: const Center(child: Text('Application Observa')),
+      theme: ThemeData(
+        brightness: Brightness.light,
+        useMaterial3: true,
       ),
+      home: const MyApp(), // Appel de l'écran principal défini dans parent.dart
     );
   }
 }
+
