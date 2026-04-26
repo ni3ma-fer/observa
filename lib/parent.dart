@@ -1,0 +1,406 @@
+import 'package:teste_app/parentenfant.dart';
+import 'package:teste_app/menu.dart';
+import 'package:flutter/material.dart';
+import 'package:flutterflow_ui/flutterflow_ui.dart';
+import 'parentmodel.dart';
+export 'parentmodel.dart';
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _ParentWidgetState();
+}
+
+class _ParentWidgetState extends State<MyApp> {
+  late ParentModel _model;
+
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => ParentModel());
+  }
+
+  @override
+  void dispose() {
+    _model.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => _model.unfocusNode.canRequestFocus
+          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+          : FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+        endDrawer: Drawer(
+          elevation: 16,
+          child: Container(
+            width: double.infinity,
+            height: double.infinity,
+            decoration: BoxDecoration(
+              color: FlutterFlowTheme.of(context).secondaryBackground,
+            ),
+            child: Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 80, 0, 0),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Expanded(
+                    child: wrapWithModel(
+                      model: _model.menuModel,
+                      updateCallback: () => setState(() {}),
+                      child: Menu(),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        appBar: AppBar(
+          backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+          automaticallyImplyLeading: false,
+          title: Text(
+            'Observa',
+            style: FlutterFlowTheme.of(context).headlineLarge.override(
+              fontFamily: 'Roboto',
+              color: Color(0xFF9BA5E0),
+              fontSize: 35,
+              letterSpacing: 0,
+            ),
+          ),
+          actions: [
+            Align(
+              alignment: AlignmentDirectional(0, 0),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Saadi mohamed',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Readex Pro',
+                        letterSpacing: 0,
+                      ),
+                    ),
+                    FlutterFlowIconButton(
+                      borderRadius: 20,
+                      borderWidth: 1,
+                      buttonSize: 50,
+                      icon: Icon(
+                        Icons.menu_rounded,
+                        color: Color(0xFF9BA5E0),
+                        size: 34,
+                      ),
+                      onPressed: () async {
+                        scaffoldKey.currentState!.openEndDrawer();
+                      },
+                    ),
+                  ].divide(SizedBox(width: 5)),
+                ),
+              ),
+            ),
+          ],
+          centerTitle: false,
+          elevation: 0,
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Align(
+                alignment: AlignmentDirectional(-0.97, 0),
+                child: Text(
+                  'Mes enfants',
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                    fontFamily: 'Readex Pro',
+                    color: FlutterFlowTheme.of(context).primaryText,
+                    fontSize: 27,
+                    letterSpacing: 0,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(12, 0, 12, 0),
+                child: ListView(
+                  padding: EdgeInsets.fromLTRB(
+                    0,
+                    0,
+                    0,
+                    14,
+                  ),
+                  primary: false,
+                  shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
+                  children: [
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      onTap: () {
+                        Navigator.of(context).push(PageRouteBuilder(
+                          pageBuilder: (context, animation, secondaryAnimation) => Parentenfant(),
+                          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                            var begin = Offset(0.0, 1.0);
+                            var end = Offset.zero;
+                            var curve = Curves.ease;
+
+                            var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+                            var offsetAnimation = animation.drive(tween);
+
+                            return SlideTransition(
+                              position: offsetAnimation,
+                              child: child,
+                            );
+                          },
+                          transitionDuration: Duration(milliseconds: 200),
+                        ));
+                      },
+                      child: Container(
+
+                        width: 100,
+                        height: 100,
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).accent4,
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 7,
+                              color: Color(0x33000000),
+                              offset: Offset(
+                                0,
+                                2,
+                              ),
+                            )
+                          ],
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(24),
+                            bottomRight: Radius.circular(24),
+                            topLeft: Radius.circular(24),
+                            topRight: Radius.circular(24),
+                          ),
+                          border: Border.all(
+                            color: FlutterFlowTheme.of(context).accent4,
+                          ),
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding:
+                              EdgeInsetsDirectional.fromSTEB(12, 15, 0, 0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Align(
+                                    alignment: AlignmentDirectional(-1, -1),
+                                    child: Text(
+                                      'Naim',
+                                      style: FlutterFlowTheme.of(context)
+                                          .headlineMedium
+                                          .override(
+                                        fontFamily: 'Outfit',
+                                        letterSpacing: 1,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                              EdgeInsetsDirectional.fromSTEB(12, 15, 0, 0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Align(
+                                    alignment: AlignmentDirectional(-1, 1),
+                                    child: Text(
+                                      ' Cem 8 Mai 1945',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                        fontFamily: 'Readex Pro',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        letterSpacing: 0,
+                                      ),
+                                    ),
+                                  ),
+                                ].divide(SizedBox(width: 5)),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Container(
+                      width: 100,
+                      height: 100,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).accent4,
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 7,
+                            color: Color(0x33000000),
+                            offset: Offset(
+                              0,
+                              2,
+                            ),
+                          )
+                        ],
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(24),
+                          bottomRight: Radius.circular(24),
+                          topLeft: Radius.circular(24),
+                          topRight: Radius.circular(24),
+                        ),
+                        border: Border.all(
+                          color: FlutterFlowTheme.of(context).accent4,
+                        ),
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding:
+                            EdgeInsetsDirectional.fromSTEB(12, 15, 0, 0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Align(
+                                  alignment: AlignmentDirectional(-1, -1),
+                                  child: Text(
+                                    'Abdelkhabir',
+                                    style: FlutterFlowTheme.of(context)
+                                        .headlineMedium
+                                        .override(
+                                      fontFamily: 'Outfit',
+                                      letterSpacing: 1,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                            EdgeInsetsDirectional.fromSTEB(12, 15, 0, 0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Align(
+                                  alignment: AlignmentDirectional(-1, 1),
+                                  child: Text(
+                                    'Cem 8 Mai 1945',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                      fontFamily: 'Readex Pro',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      letterSpacing: 0,
+                                    ),
+                                  ),
+                                ),
+                              ].divide(SizedBox(width: 5)),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: 100,
+                      height: 100,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).accent4,
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 7,
+                            color: Color(0x33000000),
+                            offset: Offset(
+                              0,
+                              2,
+                            ),
+                          )
+                        ],
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(24),
+                          bottomRight: Radius.circular(24),
+                          topLeft: Radius.circular(24),
+                          topRight: Radius.circular(24),
+                        ),
+                        border: Border.all(
+                          color: FlutterFlowTheme.of(context).accent4,
+                        ),
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding:
+                            EdgeInsetsDirectional.fromSTEB(12, 15, 0, 0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Align(
+                                  alignment: AlignmentDirectional(-1, -1),
+                                  child: Text(
+                                    ' Hichem',
+                                    style: FlutterFlowTheme.of(context)
+                                        .headlineMedium
+                                        .override(
+                                      fontFamily: 'Outfit',
+                                      letterSpacing: 1,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                            EdgeInsetsDirectional.fromSTEB(12, 15, 0, 0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Align(
+                                  alignment: AlignmentDirectional(-1, 1),
+                                  child: Text(
+                                    'Cem 8 Mai 1945',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                      fontFamily: 'Readex Pro',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      letterSpacing: 0,
+                                    ),
+                                  ),
+                                ),
+                              ].divide(SizedBox(width: 5)),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ].divide(SizedBox(height: 12)),
+                ),
+              ),
+            ].divide(SizedBox(height: 8)).addToEnd(SizedBox(height: 8)),
+          ),
+        ),
+      ),
+    );
+  }
+}

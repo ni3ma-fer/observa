@@ -1,0 +1,128 @@
+
+import 'package:flutter/material.dart';
+import 'package:flutterflow_ui/flutterflow_ui.dart';
+
+import 'parentmodelpropo.dart';
+export 'parentmodelpropo.dart';
+
+class ParentpropoWidget extends StatefulWidget {
+  const ParentpropoWidget({super.key});
+
+  @override
+  State<ParentpropoWidget> createState() => _ParentpropoWidgetState();
+}
+
+class _ParentpropoWidgetState extends State<ParentpropoWidget> {
+  late ParentpropoModel _model;
+
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => ParentpropoModel());
+  }
+
+  @override
+  void dispose() {
+    _model.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => _model.unfocusNode.canRequestFocus
+          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+          : FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+        appBar: AppBar(
+          backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+          automaticallyImplyLeading: false,
+          leading: FlutterFlowIconButton(
+            borderColor: Colors.transparent,
+            borderRadius: 30,
+            borderWidth: 1,
+            buttonSize: 60,
+            icon: Icon(
+              Icons.arrow_back_rounded,
+              color: Color(0xFF9BA5E0),
+              size: 30,
+            ),
+            onPressed: () async {
+              Navigator.pop(context);
+            },
+          ),
+          title: Text(
+            'À propos',
+            style: FlutterFlowTheme.of(context).headlineMedium.override(
+              fontFamily: 'Readex Pro',
+              color: FlutterFlowTheme.of(context).primaryText,
+              fontSize: 22,
+              letterSpacing: 0,
+            ),
+          ),
+          actions: [],
+          centerTitle: false,
+          elevation: 0,
+        ),
+        body: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            ListTile(
+              title: Text(
+                'Politique de confidentialité',
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                  fontFamily: 'Readex Pro',
+                  letterSpacing: 0,
+                ),
+              ),
+              trailing: Icon(
+                Icons.arrow_forward_ios,
+                color: FlutterFlowTheme.of(context).secondaryText,
+                size: 20,
+              ),
+              tileColor: FlutterFlowTheme.of(context).secondaryBackground,
+              dense: false,
+            ),
+            ListTile(
+              title: Text(
+                'Conditions d"utilisation',
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                  fontFamily: 'Readex Pro',
+                  letterSpacing: 0,
+                ),
+              ),
+              trailing: Icon(
+                Icons.arrow_forward_ios,
+                color: FlutterFlowTheme.of(context).secondaryText,
+                size: 20,
+              ),
+              tileColor: FlutterFlowTheme.of(context).secondaryBackground,
+              dense: false,
+            ),
+            ListTile(
+              title: Text(
+                'Mises à jour des applications',
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                  fontFamily: 'Readex Pro',
+                  letterSpacing: 0,
+                ),
+              ),
+              trailing: Icon(
+                Icons.arrow_forward_ios,
+                color: FlutterFlowTheme.of(context).secondaryText,
+                size: 20,
+              ),
+              tileColor: FlutterFlowTheme.of(context).secondaryBackground,
+              dense: false,
+            ),
+          ].divide(SizedBox(height: 5)).addToStart(SizedBox(height: 8)),
+        ),
+      ),
+    );
+  }
+}

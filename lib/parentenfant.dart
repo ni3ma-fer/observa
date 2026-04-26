@@ -1,0 +1,2118 @@
+import 'package:teste_app/chatparent.dart';
+
+import 'parentenfant_model.dart';
+import 'package:teste_app/parentdusc.dart';
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/material.dart';
+import 'package:flutterflow_ui/flutterflow_ui.dart';
+export 'parentenfant_model.dart';
+
+class Parentenfant extends StatefulWidget {
+  const Parentenfant({super.key});
+
+  @override
+  State<Parentenfant> createState() => _ParentenfantWidgetState();
+}
+
+class _ParentenfantWidgetState extends State<Parentenfant>
+    with TickerProviderStateMixin {
+  late ParentenfantModel _model;
+
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => ParentenfantModel());
+
+    _model.tabBarController = TabController(
+      vsync: this,
+      length: 3,
+      initialIndex: 0,
+    )..addListener(() => setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    _model.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => _model.unfocusNode.canRequestFocus
+          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+          : FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+        appBar: AppBar(
+          backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+          automaticallyImplyLeading: false,
+          leading: FlutterFlowIconButton(
+            borderColor: Colors.transparent,
+            borderRadius: 30,
+            borderWidth: 1,
+            buttonSize: 60,
+            icon: Icon(
+              Icons.arrow_back_rounded,
+              color: Color(0xFF9BA5E0),
+              size: 30,
+            ),
+            onPressed: () async {
+              Navigator.pop(context);
+            },
+          ),
+          title: Text(
+           'NAIM',
+            style: FlutterFlowTheme.of(context).headlineMedium.override(
+              fontFamily: 'Readex Pro',
+              fontSize: 22,
+              letterSpacing: 0,
+            ),
+          ),
+          actions: [],
+          centerTitle: false,
+          elevation: 0,
+        ),
+        body: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+              child: Container(
+                width: double.infinity,
+                height: 230,
+                child: CarouselSlider(
+                  items: [
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Container(
+                          width: 100,
+                          height: 121,
+                          constraints: BoxConstraints(
+                            minWidth: double.infinity,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Color(0xFF9BA5E0),
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Professeur',
+                                      textAlign: TextAlign.start,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                        fontFamily: 'Readex Pro',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        fontSize: 20,
+                                        letterSpacing: 0,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Langue francais',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                      fontFamily: 'Readex Pro',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      fontSize: 12,
+                                      letterSpacing: 0,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Kara Chafia',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                      fontFamily: 'Readex Pro',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      fontSize: 20,
+                                      letterSpacing: 0,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ].divide(SizedBox(height: 5)),
+                          ),
+                        ),
+                        FFButtonWidget(
+                          onPressed: () {
+                            print('Button pressed ...');
+                          },
+                          text: 'Voir les annonces',
+                          options: FFButtonOptions(
+                            width: double.infinity,
+                            height: 40,
+                            padding:
+                            EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
+                            iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                            color: Color(0xFF9BA5E0),
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                              fontFamily: 'Readex Pro',
+                              color: Colors.white,
+                              letterSpacing: 0,
+                            ),
+                            elevation: 3,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1,
+                            ),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                        FlutterFlowIconButton(
+                          borderRadius: 30,
+                          borderWidth: 1,
+                          icon: Icon(
+                            Icons.message_rounded,
+                            color: Color(0xFF9BA5E0),
+                            size: 30,
+                          ),
+                          onPressed: () {
+                            print('IconButton pressed ...');
+                          },
+                        ),
+                      ].divide(SizedBox(height: 10)),
+                    ),
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Container(
+                          width: 100,
+                          height: 121,
+                          constraints: BoxConstraints(
+                            minWidth: double.infinity,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Color(0xFF9BA5E0),
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Professeur',
+                                      textAlign: TextAlign.start,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                        fontFamily: 'Readex Pro',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        fontSize: 20,
+                                        letterSpacing: 0,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'langue Anglaise',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                      fontFamily: 'Readex Pro',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      fontSize: 12,
+                                      letterSpacing: 0,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Kara Chafia',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                      fontFamily: 'Readex Pro',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      fontSize: 20,
+                                      letterSpacing: 0,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ].divide(SizedBox(height: 5)),
+                          ),
+                        ),
+                        FFButtonWidget(
+                          onPressed: () {
+                            print('Button pressed ...');
+                          },
+                          text: 'Voir les annonces',
+                          options: FFButtonOptions(
+                            width: double.infinity,
+                            height: 40,
+                            padding:
+                            EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
+                            iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                            color: Color(0xFF9BA5E0),
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                              fontFamily: 'Readex Pro',
+                              color: Colors.white,
+                              letterSpacing: 0,
+                            ),
+                            elevation: 3,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1,
+                            ),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                        FlutterFlowIconButton(
+                          borderRadius: 30,
+                          borderWidth: 1,
+                          icon: Icon(
+                            Icons.message_rounded,
+                            color: Color(0xFF9BA5E0),
+                            size: 30,
+                          ),
+                          onPressed: () {
+                            Navigator.of(context).push(PageRouteBuilder(
+                              pageBuilder: (context, animation, secondaryAnimation) => Parentdusc(),
+                              transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                                var begin = Offset(0.0, 1.0);
+                                var end = Offset.zero;
+                                var curve = Curves.ease;
+
+                                var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+                                var offsetAnimation = animation.drive(tween);
+
+                                return SlideTransition(
+                                  position: offsetAnimation,
+                                  child: child,
+                                );
+                              },
+                              transitionDuration: Duration(milliseconds: 200),
+                            ));
+                           },
+                        ),
+                      ].divide(SizedBox(height: 10)),
+                    ),
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 100,
+                          height: 121,
+                          constraints: BoxConstraints(
+                            minWidth: double.infinity,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Color(0xFF9BA5E0),
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Professeur',
+                                      textAlign: TextAlign.start,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                        fontFamily: 'Readex Pro',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        fontSize: 20,
+                                        letterSpacing: 0,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Mathematique',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                      fontFamily: 'Readex Pro',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      fontSize: 12,
+                                      letterSpacing: 0,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Kara Chafia',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                      fontFamily: 'Readex Pro',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      fontSize: 20,
+                                      letterSpacing: 0,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ].divide(SizedBox(height: 5)),
+                          ),
+                        ),
+                        FFButtonWidget(
+                          onPressed: () {
+                            print('Button pressed ...');
+                          },
+                          text: 'Voir le announces',
+                          options: FFButtonOptions(
+                            width: double.infinity,
+                            height: 40,
+                            padding:
+                            EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
+                            iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                            color: Color(0xFF9BA5E0),
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                              fontFamily: 'Readex Pro',
+                              color: Colors.white,
+                              letterSpacing: 0,
+                            ),
+                            elevation: 3,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1,
+                            ),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                        FlutterFlowIconButton(
+                          borderRadius: 30,
+                          borderWidth: 1,
+                          icon: Icon(
+                            Icons.message_rounded,
+                            color: Color(0xFF9BA5E0),
+                            size: 30,
+                          ),
+                          onPressed: () {
+                            print('IconButton pressed ...');
+                          },
+                        ),
+                      ].divide(SizedBox(height: 10)),
+                    ),
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Container(
+                          width: 100,
+                          height: 121,
+                          constraints: BoxConstraints(
+                            minWidth: double.infinity,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Color(0xFF9BA5E0),
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Professeur',
+                                      textAlign: TextAlign.start,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                        fontFamily: 'Readex Pro',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        fontSize: 20,
+                                        letterSpacing: 0,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Sciences physique',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                      fontFamily: 'Readex Pro',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      fontSize: 12,
+                                      letterSpacing: 0,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Mouhamed Chafia',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                      fontFamily: 'Readex Pro',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      fontSize: 20,
+                                      letterSpacing: 0,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ].divide(SizedBox(height: 5)),
+                          ),
+                        ),
+                        FFButtonWidget(
+                          onPressed: () {
+                            print('Button pressed ...');
+                          },
+                          text: 'Voir les annonces',
+                          options: FFButtonOptions(
+                            width: double.infinity,
+                            height: 40,
+                            padding:
+                            EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
+                            iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                            color: Color(0xFF9BA5E0),
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                              fontFamily: 'Readex Pro',
+                              color: Colors.white,
+                              letterSpacing: 0,
+                            ),
+                            elevation: 3,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1,
+                            ),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                        FlutterFlowIconButton(
+                          borderRadius: 30,
+                          borderWidth: 1,
+                          icon: Icon(
+                            Icons.message_rounded,
+                            color: Color(0xFF9BA5E0),
+                            size: 30,
+                          ),
+                          onPressed: () {
+                            print('IconButton pressed ...');
+                          },
+                        ),
+                      ].divide(SizedBox(height: 10)),
+                    ),
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Container(
+                          width: 100,
+                          height: 121,
+                          constraints: BoxConstraints(
+                            minWidth: double.infinity,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Color(0xFF9BA5E0),
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Professeur',
+                                      textAlign: TextAlign.start,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                        fontFamily: 'Readex Pro',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        fontSize: 20,
+                                        letterSpacing: 0,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Langue et littérature arabe',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                      fontFamily: 'Readex Pro',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      fontSize: 12,
+                                      letterSpacing: 0,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Mohamed chafia',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                      fontFamily: 'Readex Pro',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      fontSize: 20,
+                                      letterSpacing: 0,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ].divide(SizedBox(height: 5)),
+                          ),
+                        ),
+                        FFButtonWidget(
+                          onPressed: () {
+                            print('Button pressed ...');
+                          },
+                          text:'Voir les annonces',
+                          options: FFButtonOptions(
+                            width: double.infinity,
+                            height: 40,
+                            padding:
+                            EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
+                            iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                            color: Color(0xFF9BA5E0),
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                              fontFamily: 'Readex Pro',
+                              color: Colors.white,
+                              letterSpacing: 0,
+                            ),
+                            elevation: 3,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1,
+                            ),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                        FlutterFlowIconButton(
+                          borderRadius: 30,
+                          borderWidth: 1,
+                          icon: Icon(
+                            Icons.message_rounded,
+                            color: Color(0xFF9BA5E0),
+                            size: 30,
+                          ),
+                          onPressed: () {
+                            print('IconButton pressed ...');
+                          },
+                        ),
+                      ].divide(SizedBox(height: 10)),
+                    ),
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Container(
+                          width: 100,
+                          height: 121,
+                          constraints: BoxConstraints(
+                            minWidth: double.infinity,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Color(0xFF9BA5E0),
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Professeure',
+                                      textAlign: TextAlign.start,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                        fontFamily: 'Readex Pro',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        fontSize: 20,
+                                        letterSpacing: 0,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Sciences de la nature et de la...',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                      fontFamily: 'Readex Pro',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      fontSize: 12,
+                                      letterSpacing: 0,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Mohamed chafia',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                      fontFamily: 'Readex Pro',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      fontSize: 20,
+                                      letterSpacing: 0,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ].divide(SizedBox(height: 5)),
+                          ),
+                        ),
+                        FFButtonWidget(
+                          onPressed: () {
+                            print('Button pressed ...');
+                          },
+                          text: 'Voir les annonces',
+                          options: FFButtonOptions(
+                            width: double.infinity,
+                            height: 40,
+                            padding:
+                            EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
+                            iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                            color: Color(0xFF9BA5E0),
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                              fontFamily: 'Readex Pro',
+                              color: Colors.white,
+                              letterSpacing: 0,
+                            ),
+                            elevation: 3,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1,
+                            ),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                        FlutterFlowIconButton(
+                          borderRadius: 30,
+                          borderWidth: 1,
+                          icon: Icon(
+                            Icons.message_rounded,
+                            color: Color(0xFF9BA5E0),
+                            size: 30,
+                          ),
+                          onPressed: () {
+                            print('IconButton pressed ...');
+                          },
+                        ),
+                      ].divide(SizedBox(height: 10)),
+                    ),
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Container(
+                          width: 100,
+                          height: 121,
+                          constraints: BoxConstraints(
+                            minWidth: double.infinity,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Color(0xFF9BA5E0),
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Professeure',
+                                      textAlign: TextAlign.start,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                        fontFamily: 'Readex Pro',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        fontSize: 20,
+                                        letterSpacing: 0,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    ' Histoire et Géographie',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                      fontFamily: 'Readex Pro',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      fontSize: 12,
+                                      letterSpacing: 0,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Mohamed chafia',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                      fontFamily: 'Readex Pro',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      fontSize: 20,
+                                      letterSpacing: 0,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ].divide(SizedBox(height: 5)),
+                          ),
+                        ),
+                        FFButtonWidget(
+                          onPressed: () {
+                            print('Button pressed ...');
+                          },
+                          text: 'Voir les annonces',
+                          options: FFButtonOptions(
+                            width: double.infinity,
+                            height: 40,
+                            padding:
+                            EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
+                            iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                            color: Color(0xFF9BA5E0),
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                              fontFamily: 'Readex Pro',
+                              color: Colors.white,
+                              letterSpacing: 0,
+                            ),
+                            elevation: 3,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1,
+                            ),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                        FlutterFlowIconButton(
+                          borderRadius: 30,
+                          borderWidth: 1,
+                          icon: Icon(
+                            Icons.message_rounded,
+                            color: Color(0xFF9BA5E0),
+                            size: 30,
+                          ),
+                          onPressed: () {
+                            print('IconButton pressed ...');
+                          },
+                        ),
+                      ].divide(SizedBox(height: 10)),
+                    ),
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Container(
+                          width: 100,
+                          height: 121,
+                          constraints: BoxConstraints(
+                            minWidth: double.infinity,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Color(0xFF9BA5E0),
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Professeure',
+                                      textAlign: TextAlign.start,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                        fontFamily: 'Readex Pro',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        fontSize: 20,
+                                        letterSpacing: 0,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Education Civique',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                      fontFamily: 'Readex Pro',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      fontSize: 12,
+                                      letterSpacing: 0,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Mohamed chafia',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                      fontFamily: 'Readex Pro',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      fontSize: 20,
+                                      letterSpacing: 0,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ].divide(SizedBox(height: 5)),
+                          ),
+                        ),
+                        FFButtonWidget(
+                          onPressed: () {
+                            print('Button pressed ...');
+                          },
+                          text: 'Voir les annonces',
+                          options: FFButtonOptions(
+                            width: double.infinity,
+                            height: 40,
+                            padding:
+                            EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
+                            iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                            color: Color(0xFF9BA5E0),
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                              fontFamily: 'Readex Pro',
+                              color: Colors.white,
+                              letterSpacing: 0,
+                            ),
+                            elevation: 3,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1,
+                            ),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                        FlutterFlowIconButton(
+                          borderRadius: 30,
+                          borderWidth: 1,
+                          icon: Icon(
+                            Icons.message_rounded,
+                            color: Color(0xFF9BA5E0),
+                            size: 30,
+                          ),
+                          onPressed: () {
+                            print('IconButton pressed ...');
+                          },
+                        ),
+                      ].divide(SizedBox(height: 10)),
+                    ),
+                  ],
+                  carouselController: _model.carouselController ??=
+                      CarouselController(),
+                  options: CarouselOptions(
+                    initialPage: 1,
+                    viewportFraction: 0.5,
+                    disableCenter: true,
+                    enlargeCenterPage: true,
+                    enlargeFactor: 0.25,
+                    enableInfiniteScroll: true,
+                    scrollDirection: Axis.horizontal,
+                    autoPlay: false,
+                    onPageChanged: (index, _) =>
+                    _model.carouselCurrentIndex = index,
+                  ),
+                ),
+              ),
+            ),
+            Divider(
+              thickness: 0.3,
+              color: FlutterFlowTheme.of(context).secondaryText,
+            ),
+            Expanded(
+              child: Column(
+                children: [
+                  Align(
+                    alignment: Alignment(0, 0),
+                    child: FlutterFlowButtonTabBar(
+                      useToggleButtonStyle: false,
+                      labelStyle:
+                      FlutterFlowTheme.of(context).titleMedium.override(
+                        fontFamily: 'Readex Pro',
+                        letterSpacing: 0,
+                      ),
+                      unselectedLabelStyle: TextStyle(),
+                      labelColor: FlutterFlowTheme.of(context).info,
+                      unselectedLabelColor:
+                      FlutterFlowTheme.of(context).secondaryText,
+                      backgroundColor: Color(0xFF9BA5E0),
+                      unselectedBackgroundColor:
+                      FlutterFlowTheme.of(context).alternate,
+                      borderColor: Color(0xFF9BA5E0),
+                      unselectedBorderColor:
+                      FlutterFlowTheme.of(context).alternate,
+                      borderWidth: 1,
+                      borderRadius: 8,
+                      elevation: 0,
+                      buttonMargin: EdgeInsetsDirectional.fromSTEB(3, 0, 3, 0),
+                      padding: EdgeInsets.all(16),
+                      tabs: const [
+                        Tab(
+                          text: 'Absence',
+                        ),
+                        Tab(
+                          text: 'Remarque',
+                        ),
+                        Tab(
+                          text: 'Note',
+                        ),
+                      ],
+                      controller: _model.tabBarController,
+                      onTap: (i) async {
+                        [() async {}, () async {}, () async {}][i]();
+                      },
+                    ),
+                  ),
+                  Expanded(
+                    child: TabBarView(
+                      controller: _model.tabBarController,
+                      children: [
+                        SingleChildScrollView(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Abscence',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                  fontFamily: 'Readex Pro',
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryText,
+                                  fontSize: 32,
+                                  letterSpacing: 0,
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    16, 12, 16, 16),
+                                child: Container(
+                                  width: MediaQuery.sizeOf(context).width,
+                                  height: 100,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFF9BA5E0),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        blurRadius: 12,
+                                        color: Color(0x34000000),
+                                        offset: Offset(
+                                          -2,
+                                          5,
+                                        ),
+                                      )
+                                    ],
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        8, 8, 12, 8),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Container(
+                                          width: 4,
+                                          height: double.infinity,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            borderRadius:
+                                            BorderRadius.circular(4),
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Padding(
+                                            padding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                12, 0, 0, 0),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  ' Dimanche',
+                                                  style: FlutterFlowTheme.of(
+                                                      context)
+                                                      .bodyMedium
+                                                      .override(
+                                                    fontFamily:
+                                                    'Plus Jakarta Sans',
+                                                    color: FlutterFlowTheme
+                                                        .of(context)
+                                                        .primaryBackground,
+                                                    fontSize: 18,
+                                                    letterSpacing: 0,
+                                                    fontWeight:
+                                                    FontWeight.bold,
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(0, 4, 0, 0),
+                                                  child: Text(
+                                                    'Mathematique',
+                                                    style: FlutterFlowTheme.of(
+                                                        context)
+                                                        .labelMedium
+                                                        .override(
+                                                      fontFamily:
+                                                      'Plus Jakarta Sans',
+                                                      color: FlutterFlowTheme
+                                                          .of(context)
+                                                          .alternate,
+                                                      fontSize: 14,
+                                                      letterSpacing: 0,
+                                                      fontWeight:
+                                                      FontWeight.w500,
+                                                    ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(0, 4, 0, 0),
+                                                  child: Text(
+                                                    '8:00Am',
+                                                    style: FlutterFlowTheme.of(
+                                                        context)
+                                                        .headlineSmall
+                                                        .override(
+                                                      fontFamily: 'Outfit',
+                                                      color:
+                                                      Color(0xFF14181B),
+                                                      fontSize: 24,
+                                                      letterSpacing: 0,
+                                                      fontWeight:
+                                                      FontWeight.w500,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              12, 0, 0, 0),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 4, 0, 4),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                  MainAxisSize.max,
+                                                  crossAxisAlignment:
+                                                  CrossAxisAlignment.end,
+                                                  children: [
+                                                    Align(
+                                                      alignment:
+                                                      AlignmentDirectional(
+                                                          0, -1),
+                                                      child: Padding(
+                                                        padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                            4, 0, 0, 0),
+                                                        child: Text(
+                                                          '23/02/2024',
+                                                          style: FlutterFlowTheme
+                                                              .of(context)
+                                                              .headlineSmall
+                                                              .override(
+                                                            fontFamily:
+                                                            'Outfit',
+                                                            color: FlutterFlowTheme.of(
+                                                                context)
+                                                                .primaryBackground,
+                                                            fontSize: 22,
+                                                            letterSpacing:
+                                                            0,
+                                                            fontWeight:
+                                                            FontWeight
+                                                                .w500,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    16, 12, 16, 16),
+                                child: Container(
+                                  width: MediaQuery.sizeOf(context).width,
+                                  height: 100,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        blurRadius: 12,
+                                        color: Color(0x34000000),
+                                        offset: Offset(
+                                          -2,
+                                          5,
+                                        ),
+                                      )
+                                    ],
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        8, 8, 12, 8),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Container(
+                                          width: 4,
+                                          height: double.infinity,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            borderRadius:
+                                            BorderRadius.circular(4),
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Padding(
+                                            padding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                12, 0, 0, 0),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Lundi',
+                                                  style: FlutterFlowTheme.of(
+                                                      context)
+                                                      .bodyMedium
+                                                      .override(
+                                                    fontFamily:
+                                                    'Plus Jakarta Sans',
+                                                    color: FlutterFlowTheme
+                                                        .of(context)
+                                                        .primaryBackground,
+                                                    fontSize: 18,
+                                                    letterSpacing: 0,
+                                                    fontWeight:
+                                                    FontWeight.bold,
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(0, 4, 0, 0),
+                                                  child: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'oizz7jfb' /* Sciences physiques */,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                        context)
+                                                        .labelMedium
+                                                        .override(
+                                                      fontFamily:
+                                                      'Plus Jakarta Sans',
+                                                      color: FlutterFlowTheme
+                                                          .of(context)
+                                                          .alternate,
+                                                      fontSize: 14,
+                                                      letterSpacing: 0,
+                                                      fontWeight:
+                                                      FontWeight.w500,
+                                                    ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(0, 4, 0, 0),
+                                                  child: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'bc43pmha' /* 8:00Am */,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                        context)
+                                                        .headlineSmall
+                                                        .override(
+                                                      fontFamily: 'Outfit',
+                                                      color:
+                                                      Color(0xFF14181B),
+                                                      fontSize: 24,
+                                                      letterSpacing: 0,
+                                                      fontWeight:
+                                                      FontWeight.w500,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              12, 0, 0, 0),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 4, 0, 4),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                  MainAxisSize.max,
+                                                  crossAxisAlignment:
+                                                  CrossAxisAlignment.end,
+                                                  children: [
+                                                    Align(
+                                                      alignment:
+                                                      AlignmentDirectional(
+                                                          0, -1),
+                                                      child: Padding(
+                                                        padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                            4, 0, 0, 0),
+                                                        child: Text(
+                                                         '19/02/2024',
+                                                          style: FlutterFlowTheme
+                                                              .of(context)
+                                                              .headlineSmall
+                                                              .override(
+                                                            fontFamily:
+                                                            'Outfit',
+                                                            color: FlutterFlowTheme.of(
+                                                                context)
+                                                                .primaryBackground,
+                                                            fontSize: 22,
+                                                            letterSpacing:
+                                                            0,
+                                                            fontWeight:
+                                                            FontWeight
+                                                                .w500,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    16, 12, 16, 16),
+                                child: Container(
+                                  width: MediaQuery.sizeOf(context).width,
+                                  height: 100,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        blurRadius: 12,
+                                        color: Color(0x34000000),
+                                        offset: Offset(
+                                          -2,
+                                          5,
+                                        ),
+                                      )
+                                    ],
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        8, 8, 12, 8),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Container(
+                                          width: 4,
+                                          height: double.infinity,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            borderRadius:
+                                            BorderRadius.circular(4),
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Padding(
+                                            padding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                12, 0, 0, 0),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Mardi',
+                                                  style: FlutterFlowTheme.of(
+                                                      context)
+                                                      .bodyMedium
+                                                      .override(
+                                                    fontFamily:
+                                                    'Plus Jakarta Sans',
+                                                    color: FlutterFlowTheme
+                                                        .of(context)
+                                                        .primaryBackground,
+                                                    fontSize: 18,
+                                                    letterSpacing: 0,
+                                                    fontWeight:
+                                                    FontWeight.bold,
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(0, 4, 0, 0),
+                                                  child: Text(
+                                                    'Langue et littérature arabe',
+                                                    style: FlutterFlowTheme.of(
+                                                        context)
+                                                        .labelMedium
+                                                        .override(
+                                                      fontFamily:
+                                                      'Plus Jakarta Sans',
+                                                      color: FlutterFlowTheme
+                                                          .of(context)
+                                                          .alternate,
+                                                      fontSize: 14,
+                                                      letterSpacing: 0,
+                                                      fontWeight:
+                                                      FontWeight.w500,
+                                                    ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(0, 4, 0, 0),
+                                                  child: Text(
+                                                    '8:00Am',
+                                                    style: FlutterFlowTheme.of(
+                                                        context)
+                                                        .headlineSmall
+                                                        .override(
+                                                      fontFamily: 'Outfit',
+                                                      color:
+                                                      Color(0xFF14181B),
+                                                      fontSize: 24,
+                                                      letterSpacing: 0,
+                                                      fontWeight:
+                                                      FontWeight.w500,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              12, 0, 0, 0),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 4, 0, 4),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                  MainAxisSize.max,
+                                                  crossAxisAlignment:
+                                                  CrossAxisAlignment.end,
+                                                  children: [
+                                                    Align(
+                                                      alignment:
+                                                      AlignmentDirectional(
+                                                          0, -1),
+                                                      child: Padding(
+                                                        padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                            4, 0, 0, 0),
+                                                        child: Text(
+                                                          '09/02/2024',
+                                                          style: FlutterFlowTheme
+                                                              .of(context)
+                                                              .headlineSmall
+                                                              .override(
+                                                            fontFamily:
+                                                            'Outfit',
+                                                            color: FlutterFlowTheme.of(
+                                                                context)
+                                                                .primaryBackground,
+                                                            fontSize: 22,
+                                                            letterSpacing:
+                                                            0,
+                                                            fontWeight:
+                                                            FontWeight
+                                                                .w500,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SingleChildScrollView(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Align(
+                                alignment: AlignmentDirectional(-0.97, 0),
+                                child: Text(
+                                  'Remarque',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                    fontFamily: 'Readex Pro',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    fontSize: 27,
+                                    letterSpacing: 0,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                                child: ListView(
+                                  padding: EdgeInsets.zero,
+                                  primary: false,
+                                  shrinkWrap: true,
+                                  scrollDirection: Axis.vertical,
+                                  children: [
+                                    InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        await showModalBottomSheet(
+                                          isScrollControlled: true,
+                                          backgroundColor: Colors.transparent,
+                                          enableDrag: false,
+                                          context: context,
+                                          builder: (context) {
+                                            return GestureDetector(
+                                              onTap: () => _model.unfocusNode
+                                                  .canRequestFocus
+                                                  ? FocusScope.of(context)
+                                                  .requestFocus(
+                                                  _model.unfocusNode)
+                                                  : FocusScope.of(context)
+                                                  .unfocus(),
+                                              child: Padding(
+                                                padding:
+                                                MediaQuery.viewInsetsOf(
+                                                    context),
+                                                child: ChatparentWidget(),
+                                              ),
+                                            );
+                                          },
+                                        ).then((value) => safeSetState(() {}));
+                                      },
+                                      child: Container(
+                                        width: 100,
+                                        height: 100,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .accent1,
+                                        ),
+                                        child: Padding(
+                                          padding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              30, 0, 0, 0),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                            children: [
+                                              Row(
+                                                mainAxisSize: MainAxisSize.min,
+                                                mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    'Kara chafia',
+                                                    style: FlutterFlowTheme.of(
+                                                        context)
+                                                        .headlineLarge
+                                                        .override(
+                                                      fontFamily: 'Outfit',
+                                                      fontSize: 15,
+                                                      letterSpacing: 0,
+                                                      fontWeight:
+                                                      FontWeight.w800,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  SelectionArea(
+                                                      child: AutoSizeText(
+                                                        'hello',
+                                                        style: FlutterFlowTheme.of(
+                                                            context)
+                                                            .bodyMedium
+                                                            .override(
+                                                          fontFamily:
+                                                          'Readex Pro',
+                                                          letterSpacing: 0,
+                                                          lineHeight: 1.5,
+                                                        ),
+                                                      )),
+                                                ],
+                                              ),
+                                              Row(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  Text(
+                                                    '4 mars à 12:08',
+                                                    style: FlutterFlowTheme.of(
+                                                        context)
+                                                        .bodyMedium
+                                                        .override(
+                                                      fontFamily:
+                                                      'Roboto',
+                                                      color: FlutterFlowTheme
+                                                          .of(context)
+                                                          .secondaryText,
+                                                      fontSize: 13,
+                                                      letterSpacing: 0,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ].divide(SizedBox(height: 1)),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 100,
+                                      height: 100,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .accent4,
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            30, 0, 0, 0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                          children: [
+                                            Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Chafia mohamed',
+                                                  style: FlutterFlowTheme.of(
+                                                      context)
+                                                      .headlineLarge
+                                                      .override(
+                                                    fontFamily: 'Outfit',
+                                                    fontSize: 15,
+                                                    letterSpacing: 0,
+                                                    fontWeight:
+                                                    FontWeight.w800,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                SelectionArea(
+                                                    child: AutoSizeText(
+                                                      'hello',
+                                                      style: FlutterFlowTheme.of(
+                                                          context)
+                                                          .bodyMedium
+                                                          .override(
+                                                        fontFamily:
+                                                        'Readex Pro',
+                                                        letterSpacing: 0,
+                                                        lineHeight: 1.5,
+                                                      ),
+                                                    )),
+                                              ],
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                Text(
+                                                  '1 mars à 12:08',
+                                                  style: FlutterFlowTheme.of(
+                                                      context)
+                                                      .bodyMedium
+                                                      .override(
+                                                    fontFamily:
+                                                    'Roboto',
+                                                    color:
+                                                    FlutterFlowTheme.of(
+                                                        context)
+                                                        .secondaryText,
+                                                    fontSize: 13,
+                                                    letterSpacing: 0,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ].divide(SizedBox(height: 1)),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 100,
+                                      height: 100,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .accent4,
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            30, 0, 0, 0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                          children: [
+                                            Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  ' Mohamed kara',
+                                                  style: FlutterFlowTheme.of(
+                                                      context)
+                                                      .headlineLarge
+                                                      .override(
+                                                    fontFamily: 'Outfit',
+                                                    fontSize: 15,
+                                                    letterSpacing: 0,
+                                                    fontWeight:
+                                                    FontWeight.w800,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                SelectionArea(
+                                                    child: AutoSizeText(
+                                                      'hello',
+                                                      style: FlutterFlowTheme.of(
+                                                          context)
+                                                          .bodyMedium
+                                                          .override(
+                                                        fontFamily:
+                                                        'Readex Pro',
+                                                        letterSpacing: 0,
+                                                        lineHeight: 1.5,
+                                                      ),
+                                                    )),
+                                              ],
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                Text(
+                                                  '4 mars à 11:04',
+                                                  style: FlutterFlowTheme.of(
+                                                      context)
+                                                      .bodyMedium
+                                                      .override(
+                                                    fontFamily:
+                                                    'Roboto',
+                                                    color:
+                                                    FlutterFlowTheme.of(
+                                                        context)
+                                                        .secondaryText,
+                                                    fontSize: 13,
+                                                    letterSpacing: 0,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ].divide(SizedBox(height: 1)),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ].addToEnd(SizedBox(height: 8)),
+                          ),
+                        ),
+      ListView(
+        padding: EdgeInsets.zero,
+        scrollDirection: Axis.vertical,
+        children: [
+        Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: CachedNetworkImage(
+              fadeInDuration: Duration(milliseconds: 500),
+              fadeOutDuration: Duration(milliseconds: 500),
+              imageUrl:
+              'https://images.unsplash.com/photo-1530210124550-912dc1381cb8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHwxNnx8c2NpZW5jZXxlbnwwfHx8fDE3MTQxNTMyMDh8MA&ixlib=rb-4.0.3&q=80&w=1080',
+              width: double.infinity,
+              height: 100,
+              fit: BoxFit.cover,
+            ),
+          ),
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+            child: Container(
+              width: double.infinity,
+              height: 50,
+              decoration: BoxDecoration(
+                color: Color(0xFFCDD3E6),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Premier semestre',
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      fontFamily: 'Readex Pro',
+                      fontSize: 16,
+                      letterSpacing: 0,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+      Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: CachedNetworkImage(
+              fadeInDuration: Duration(milliseconds: 500),
+              fadeOutDuration: Duration(milliseconds: 500),
+              imageUrl:
+              'https://images.unsplash.com/photo-1635070040809-d434392ae756?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHwxMXx8bWF0aHxlbnwwfHx8fDE3MTAzNjcwNjV8MA&ixlib=rb-4.0.3&q=80&w=1080',
+              width: double.infinity,
+              height: 100,
+              fit: BoxFit.cover,
+            ),
+          ),
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+            child: Container(
+              width: double.infinity,
+              height: 50,
+              decoration: BoxDecoration(
+                color: Color(0xFFCDD3E6),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Deuxième semestre',
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      fontFamily: 'Readex Pro',
+                      fontSize: 16,
+                      letterSpacing: 0,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+      Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: CachedNetworkImage(
+              fadeInDuration: Duration(milliseconds: 500),
+              fadeOutDuration: Duration(milliseconds: 500),
+              imageUrl:
+              'https://images.unsplash.com/photo-1530210124550-912dc1381cb8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHwxNnx8c2NpZW5jZXxlbnwwfHx8fDE3MTQxNTMyMDh8MA&ixlib=rb-4.0.3&q=80&w=1080',
+              width: double.infinity,
+              height: 100,
+              fit: BoxFit.cover,
+            ),
+          ),
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+            child: Container(
+              width: double.infinity,
+              height: 50,
+              decoration: BoxDecoration(
+                color: Color(0xFFCDD3E6),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Troisième semestre',
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      fontFamily: 'Readex Pro',
+                      fontSize: 16,
+                      letterSpacing: 0,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+        ].divide(SizedBox(height: 25)),
+      )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ].addToStart(SizedBox(height: 8)),
+        ),
+      ),
+    );
+  }
+}
