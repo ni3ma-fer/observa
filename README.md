@@ -1,6 +1,6 @@
 ﻿# Observa
 
-Application mobile développée avec Flutter (export FlutterFlow).
+Application mobile développée avec Flutter .
 
 ## Architecture
 - lib/ : Contient tout le code source métier et l'UI (fichiers .dart).
